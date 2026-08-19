@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1522" />
+  <title>ForwardOps — Human-approved AI for freight operations</title>
+  <meta name="description" content="Explainable shipment intake, zero-trust documents, human-approved TMS execution." />
+  <meta name="author" content="Muhammad Mazhar Munir" />
+  <meta property="og:title" content="ForwardOps — Human-approved AI for freight operations" />
+  <meta property="og:description" content="Evidence-backed shipment intake, prompt-injection containment and human-approved TMS execution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://forwardops-mu.vercel.app" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://forwardops-mu.vercel.app" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">→</div><div><b>ForwardOps</b><span>freight intelligence</span></div></div>
+      <nav><button class="nav-active"><i>▣</i> Operations inbox <span>7</span></button><button><i>▤</i> Shipments</button><button><i>⌁</i> Automations</button><button><i>◇</i> Safety controls</button><button><i>⇄</i> Integrations</button></nav>
+      <div class="sidebar-bottom"><div class="health"><span class="health-dot"></span> All systems operational</div><div class="profile"><div class="avatar">MM</div><div><strong>Muhammad Mazhar Munir</strong><span>Software Engineer · TUHH</span></div></div></div>
+    </aside>
+    <main class="workspace">
+      <header class="topbar"><div><p class="eyebrow">OPERATIONS CONTROL PLANE</p><h1>Freight inbox</h1></div><div class="top-actions"><button id="customBtn" class="ghost-button primary-ghost">＋ Analyze custom request</button><div class="search">⌕ <span>Search shipments...</span><kbd>⌘ K</kbd></div><button class="ghost-button">↻ Sync</button></div></header>
+      <section class="metric-grid"><article class="metric"><div class="metric-icon">✉</div><div><span>Emails triaged</span><strong>34</strong><small>+18%</small></div></article><article class="metric"><div class="metric-icon">✓</div><div><span>Ready for approval</span><strong>12</strong><small>8 automated</small></div></article><article class="metric"><div class="metric-icon">!</div><div><span>Exceptions</span><strong>3</strong><small>all contained</small></div></article><article class="metric"><div class="metric-icon">⚡</div><div><span>Ops time saved</span><strong>2h 43m</strong><small>today</small></div></article></section>
+      <section class="control-grid">
+        <article class="panel inbox-panel"><div class="panel-head"><div><span class="panel-kicker">LIVE QUEUE</span><h2>Incoming requests</h2></div><span class="queue-chip">7 open</span></div><div id="mailList" class="mail-list"></div><div class="activity-strip"><div class="activity-title"><span class="pulse-dot"></span> Live audit</div><div id="auditItems"></div></div></article>
+        <article class="panel detail-panel"><div class="detail-head"><div class="sender-line"><div class="sender-icon">✉</div><div><span id="senderName"></span><small id="senderEmail"></small></div></div><span class="ticket" id="ticket"></span></div><h2 class="subject" id="subject"></h2><div class="email-card"><div class="email-paper" id="emailBody"></div><div class="attachment"><div class="file-glyph">▤</div><div><b>packing-list.pdf</b><span>184 KB · customer supplied</span></div><span class="untrusted">UNTRUSTED INPUT</span></div></div><button id="analyzeBtn" class="analyze-button"><span>✦</span> Analyze & build action plan</button></article>
+        <article class="panel intelligence-panel" id="intelligencePanel"><div class="empty-state" id="emptyState"><div class="empty-icon">✦</div><h3>Guarded AI workspace</h3><p>Extract shipment facts, trace every value to evidence, contain hostile instructions and prepare a human-approved TMS action.</p><div class="architecture-mini"><span>Reason</span><b>→</b><span>Validate</span><b>→</b><span>Approve</span><b>→</b><span>Execute</span></div></div><div class="pipeline-loader hidden" id="loader"><div class="scanner"></div><div class="loader-spark">✦</div><h3>Separating data from instructions</h3><p>Extracting facts → validating required fields → scanning unsafe directives → building action plan</p></div><div id="analysisView" class="hidden"></div></article>
+      </section>
+      <section class="principles"><article><div class="principle-icon">◇</div><span><b>Zero-trust documents</b>Customer content never becomes execution policy.</span></article><article><div class="principle-icon">⌖</div><span><b>Evidence on every fact</b>Operators can trace what the system understood.</span></article><article><div class="principle-icon">✓</div><span><b>Human-authorized writes</b>AI plans; deterministic code validates and executes.</span></article><article><div class="principle-icon">⌁</div><span><b>Audit-ready architecture</b>Every decision and TMS write is observable.</span></article></section>
+    </main>
+  </div>
+  <div class="modal-backdrop hidden" id="customBackdrop"><section class="custom-modal" role="dialog" aria-modal="true" aria-labelledby="customTitle"><div class="drawer-head"><div><span class="panel-kicker">SANDBOX INPUT</span><h2 id="customTitle">Analyze your own freight request</h2></div><button id="closeCustom">×</button></div><p class="custom-help">Paste a freight email below. ForwardOps will treat it as untrusted input, extract shipment facts, flag missing fields and contain unsafe instructions.</p><div class="custom-grid"><label><span>Sender</span><input id="customSender" value="Demo Customer" /></label><label><span>Subject</span><input id="customSubject" value="Freight booking request" /></label></div><label class="custom-body"><span>Email body</span><textarea id="customText" rows="12">Hi team,
+
+please arrange air freight from Hamburg to New York. 5 pallets, total weight 920 kg. Commodity: machine parts. Incoterm FCA. Dimensions 120 x 80 x 140 cm. Pickup Friday.
+
+Thanks.</textarea></label><div class="custom-actions"><span>Nothing leaves this browser. No external AI service is called in this prototype.</span><button id="useCustom">Load into guarded workspace →</button></div></section></div>
+  <div class="drawer-backdrop hidden" id="drawerBackdrop"><aside class="evidence-drawer" id="evidenceDrawer"><div class="drawer-head"><div><span class="panel-kicker">EVIDENCE TRACE</span><h2 id="drawerTitle">Evidence</h2></div><button id="closeDrawer">×</button></div><div class="evidence-score"><div class="score-ring" id="scoreRing">96%</div><div><b>Extraction confidence</b><span>Evidence-backed, not model-only</span></div></div><div class="source-card"><span>Source</span><b id="sourceName"></b><p id="sourceExcerpt"></p></div><div class="trace-flow"><div>▤ Source input</div><b>→</b><div>✦ Extraction</div><b>→</b><div>◇ Validator</div></div><div class="drawer-note"><span>◇</span><p>This evidence can justify a proposed value, but it cannot authorize an external write. Approval and execution stay inside a separate trust boundary.</p></div></aside></div>
+  <script src="app.js"></script>
+</body>
+</html>
